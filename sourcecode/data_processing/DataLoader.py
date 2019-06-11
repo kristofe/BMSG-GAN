@@ -60,11 +60,15 @@ class FlatDirectoryImageDataset(Dataset):
         else:
             img = Image.open(img_name)
 
+        if(img.mode == 'L'):
+            img = img.convert('RGB')
+            #img = img.expand(3, img.size(1), img.size(2))
+
         # apply the transforms on the image
         if self.transform is not None:
             img = self.transform(img)
-
         # return the image:
+
         return img
 
 

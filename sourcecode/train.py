@@ -53,8 +53,8 @@ def parse_arguments():
                         help="saved state for discriminator optimizer")
 
     parser.add_argument("--images_dir", action="store", type=str,
-                        # default="../data/celeba",
-                        default=os.environ['SM_CHANNEL_TRAINING'],
+                        default="../data/terrain",
+                        #default=os.environ['SM_CHANNEL_TRAINING'],
                         help="path for the images directory")
 
     parser.add_argument("--folder_distributed", action="store", type=bool,
@@ -66,13 +66,13 @@ def parse_arguments():
                         help="whether to randomly mirror the images during training")
 
     parser.add_argument("--sample_dir", action="store", type=str,
-                        # default="samples/1/",
-                        default=os.environ['SM_MODEL_DIR'],
+                        default="samples/1/",
+                        #default=os.environ['SM_MODEL_DIR'],
                         help="path for the generated samples directory")
 
     parser.add_argument("--model_dir", action="store", type=str,
-                        # default="models/1/",
-                        default=os.environ['SM_MODEL_DIR'],
+                        default="models/1/",
+                        #default=os.environ['SM_MODEL_DIR'],
                         help="path for saved models directory")
 
     parser.add_argument("--loss_function", action="store", type=str,
@@ -83,7 +83,7 @@ def parse_arguments():
                              "hinge, relativistic-hinge")
 
     parser.add_argument("--depth", action="store", type=int,
-                        default=6,
+                        default=7,
                         help="Depth of the GAN")
 
     parser.add_argument("--latent_size", action="store", type=int,
@@ -91,7 +91,7 @@ def parse_arguments():
                         help="latent size for the generator")
 
     parser.add_argument("--batch_size", action="store", type=int,
-                        default=20,
+                        default=10,
                         help="batch_size for training")
 
     parser.add_argument("--start", action="store", type=int,
@@ -103,7 +103,7 @@ def parse_arguments():
                         help="number of epochs for training")
 
     parser.add_argument("--feedback_factor", action="store", type=int,
-                        default=100,
+                        default=4,
                         help="number of logs to generate per epoch")
 
     parser.add_argument("--num_samples", action="store", type=int,
@@ -116,19 +116,19 @@ def parse_arguments():
                         help="save model per n epochs")
 
     parser.add_argument("--g_lr", action="store", type=float,
-                        default=0.003,
+                        default=0.0003,
                         help="learning rate for generator")
 
     parser.add_argument("--d_lr", action="store", type=float,
-                        default=0.003,
+                        default=0.00003,
                         help="learning rate for discriminator")
 
     parser.add_argument("--adam_beta1", action="store", type=float,
-                        default=0,
+                        default=0.5,
                         help="value of beta_1 for adam optimizer")
 
     parser.add_argument("--adam_beta2", action="store", type=float,
-                        default=0.99,
+                        default=0.999,
                         help="value of beta_2 for adam optimizer")
 
     parser.add_argument("--use_eql", action="store", type=bool,

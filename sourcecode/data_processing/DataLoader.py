@@ -159,6 +159,7 @@ def get_transform(new_size=None, flip_horizontal=False):
             image_transform = Compose([
                 Resize(new_size),
                 ToTensor(),
+                #TODO: Make this respect 1 or 3 channels
                 #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
                 Normalize(mean=[0.5], std=[0.5])
             ])
@@ -166,6 +167,7 @@ def get_transform(new_size=None, flip_horizontal=False):
         else:
             image_transform = Compose([
                 ToTensor(),
+                #TODO: Make this respect 1 or 3 channels
                 #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
                 Normalize(mean=[0.5], std=[0.5])
             ])
@@ -175,6 +177,7 @@ def get_transform(new_size=None, flip_horizontal=False):
                 RandomHorizontalFlip(p=0.5),
                 Resize(new_size),
                 ToTensor(),
+                #TODO: Make this respect 1 or 3 channels
                 #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
                 Normalize(mean=[0.5], std=[0.5])
             ])
@@ -183,6 +186,7 @@ def get_transform(new_size=None, flip_horizontal=False):
             image_transform = Compose([
                 RandomHorizontalFlip(p=0.5),
                 ToTensor(),
+                #TODO: Make this respect 1 or 3 channels
                 #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
                 Normalize(mean=[0.5], std=[0.5])
             ])

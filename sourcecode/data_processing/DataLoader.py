@@ -60,8 +60,8 @@ class FlatDirectoryImageDataset(Dataset):
         else:
             img = Image.open(img_name)
 
-        if(img.mode == 'L'):
-            img = img.convert('RGB')
+        #if(img.mode == 'L'):
+        #    img = img.convert('RGB')
             #img = img.expand(3, img.size(1), img.size(2))
 
         # apply the transforms on the image
@@ -159,13 +159,15 @@ def get_transform(new_size=None, flip_horizontal=False):
             image_transform = Compose([
                 Resize(new_size),
                 ToTensor(),
-                Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                Normalize(mean=[0.5], std=[0.5])
             ])
 
         else:
             image_transform = Compose([
                 ToTensor(),
-                Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                Normalize(mean=[0.5], std=[0.5])
             ])
     else:
         if new_size is not None:
@@ -173,14 +175,16 @@ def get_transform(new_size=None, flip_horizontal=False):
                 RandomHorizontalFlip(p=0.5),
                 Resize(new_size),
                 ToTensor(),
-                Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                Normalize(mean=[0.5], std=[0.5])
             ])
 
         else:
             image_transform = Compose([
                 RandomHorizontalFlip(p=0.5),
                 ToTensor(),
-                Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                #Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+                Normalize(mean=[0.5], std=[0.5])
             ])
 
     return image_transform

@@ -40,10 +40,12 @@ class Generator(th.nn.Module):
         # create the ToRGB layers for various outputs:
         if self.use_eql:
             def to_rgb(in_channels):
-                return _equalized_conv2d(in_channels, 3, (1, 1), bias=True)
+                #return _equalized_conv2d(in_channels, 3, (1, 1), bias=True)
+                return _equalized_conv2d(in_channels, 1, (1, 1), bias=True)
         else:
             def to_rgb(in_channels):
-                return Conv2d(in_channels, 3, (1, 1), bias=True)
+                #return Conv2d(in_channels, 3, (1, 1), bias=True)
+                return Conv2d(in_channels, 1, (1, 1), bias=True)
 
         # create a module list of the other required general convolution blocks
         self.layers = ModuleList([GenInitialBlock(self.latent_size, use_eql=self.use_eql)])
@@ -135,10 +137,10 @@ class Discriminator(th.nn.Module):
         # create the fromRGB layers for various inputs:
         if self.use_eql:
             def from_rgb(out_channels):
-                return _equalized_conv2d(3, out_channels, (1, 1), bias=True)
+                return _equalized_conv2d(1, out_channels, (1, 1), bias=True)
         else:
             def from_rgb(out_channels):
-                return Conv2d(3, out_channels, (1, 1), bias=True)
+                return Conv2d(1, out_channels, (1, 1), bias=True)
 
         self.rgb_to_features = ModuleList()
         self.final_converter = from_rgb(self.feature_size // 2)

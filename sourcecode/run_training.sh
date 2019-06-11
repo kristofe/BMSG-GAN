@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=1 python train.py --images_dir ../data/terrain/ --epochs 500
+CUDA_VISIBLE_DEVICES=1 python train.py --images_dir ../data/terrain/ --num_epochs 500

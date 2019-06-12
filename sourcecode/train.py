@@ -83,7 +83,7 @@ def parse_arguments():
                              "hinge, relativistic-hinge")
 
     parser.add_argument("--depth", action="store", type=int,
-                        default=7,
+                        default=4, #7 = 256, 6 = 128, 5 = 64, 4 = 32
                         help="Depth of the GAN")
 
     parser.add_argument("--latent_size", action="store", type=int,
@@ -116,11 +116,11 @@ def parse_arguments():
                         help="save model per n epochs")
 
     parser.add_argument("--g_lr", action="store", type=float,
-                        default=0.0003,
+                        default=0.003,
                         help="learning rate for generator")
 
     parser.add_argument("--d_lr", action="store", type=float,
-                        default=0.00003,
+                        default=0.003,
                         help="learning rate for discriminator")
 
     parser.add_argument("--adam_beta1", action="store", type=float,
